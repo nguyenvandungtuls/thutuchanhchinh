@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
 import { timingSafeEqual } from "node:crypto";
 
-const KEYS = ["fee", "bank", "al"];
+const KEYS = ["fee", "bank", "al", "tree"];
 const eq = (a, b) => {
   a = Buffer.from(String(a || "")); b = Buffer.from(String(b || ""));
   return a.length === b.length && timingSafeEqual(a, b);
