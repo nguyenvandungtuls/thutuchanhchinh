@@ -28,3 +28,7 @@ Chép một ảnh vào thư mục `public/` và đặt tên `hero.jpg`. Banner �
 ## Số người đang online và tổng lượt truy cập
 Mỗi người mở trang (và đang xem tab) sẽ gửi một tín hiệu 60 giây một lần. Ai quá 150 giây không báo tín hiệu thì không còn được tính. File xử lý là `netlify/functions/online.mjs`. Muốn tắt tính năng này thì xóa file đó và xóa phần `ping` cùng ô `onb` trong `public/index.html`.
 Tổng lượt truy cập tăng 1 mỗi lần có người mở trang trong một phiên trình duyệt mới (tải lại trang không tính thêm). Con số được lưu trên máy chủ.
+
+## Tổng hợp theo đảng bộ cơ sở (mục Xác nhận phân bổ)
+Để biết từng đảng bộ xã, phường có bao nhiêu đơn vị đã xác nhận, hệ thống ghép tên đơn vị trong file phân bổ với danh sách có mã đơn vị ở mục Tài khoản ngân hàng.
+Làm theo thứ tự: (1) chọn 2 file tài khoản ngân hàng, (2) chọn các file phân bổ. Chi bộ trùng tên ở nhiều nơi mà trạng thái khác nhau thì số liệu là ước tính (có dấu ≈).
