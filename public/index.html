@@ -49,6 +49,7 @@ td.nm{text-align:left}tfoot td{font-weight:bold;background:var(--bg)}.z{color:va
 .hide{display:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 footer{margin:8px 24px 0;padding:14px 0 20px;border-top:1px solid rgba(255,255,255,.3);color:#c7d9ff;font-size:12px;text-align:right}
 @media(max-width:800px){.app{display:block}aside{position:static;width:auto;height:auto}nav{display:flex;gap:6px;overflow-x:auto}nav button{width:auto;white-space:nowrap}.two{grid-template-columns:1fr}.hero,.top,.wrap{margin-left:0;margin-right:0}.hero{margin:14px}}
+#onb{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));background:#fff;color:#14213d;border-radius:20px;padding:6px 12px;font-size:12px;font-weight:bold;box-shadow:0 4px 14px rgba(0,20,80,.35);z-index:5}#onb i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1f8a4c;margin-right:6px}
 </style>
 </head>
 <body>
@@ -103,6 +104,7 @@ footer{margin:8px 24px 0;padding:14px 0 20px;border-top:1px solid rgba(255,255,2
 </div>
 <footer>Số liệu do quản trị viên cập nhật từ file Excel của hệ thống.</footer>
 </main></div>
+<div id="onb"><i></i>Đang online: <span id="onl">-</span> &nbsp;|&nbsp; Tổng lượt truy cập: <span id="vis">-</span></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
@@ -252,6 +254,14 @@ function renderOv(){
 Array.prototype.forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){tab(b.getAttribute('data-go'))}});
 $('rl').onclick=load;
 function clk(){$('clk').textContent=new Date().toLocaleString('vi-VN')}clk();setInterval(clk,30000);
+var PID=sessionStorage.getItem('pid');if(!PID){PID=Math.random().toString(36).slice(2,12)+Date.now().toString(36);sessionStorage.setItem('pid',PID)}
+function ping(leave){if(!leave&&document.visibilityState!=='visible')return;
+ var nv=!leave&&!sessionStorage.getItem('vs');if(nv)sessionStorage.setItem('vs','1');
+ fetch('/api/online',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id:PID,leave:!!leave,visit:nv}),keepalive:true})
+ .then(function(r){return r.json()}).then(function(d){if(d&&d.online!==undefined){$('onl').textContent=d.online;if(d.visits!==undefined)$('vis').textContent=d.visits.toLocaleString('vi-VN')}}).catch(function(){})}
+ping();setInterval(ping,60000);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')ping()});
+window.addEventListener('pagehide',function(){ping(true)});
 tab('ov');renderOv();load();
 </script>
 </body>
