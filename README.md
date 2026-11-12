@@ -22,7 +22,7 @@ không lưu file gốc, không lưu CCCD hay tên người xác nhận.
 - Kéo thả thư mục lên Netlify (không qua GitHub) sẽ không chạy được phần lưu dữ liệu, hãy dùng cách nối GitHub ở trên.
 - Muốn đổi mật khẩu: sửa biến môi trường rồi deploy lại.
 
-## Đổi ảnh banner
+## Đổi ảnh banner (đã có sẵn hero.jpg)
 Chép một ảnh vào thư mục `public/` và đặt tên `hero.jpg`. Banner đầu trang sẽ tự dùng ảnh đó, nếu không có ảnh thì dùng màu nền mặc định.
 
 ## Số người đang online và tổng lượt truy cập
@@ -32,3 +32,9 @@ Tổng lượt truy cập tăng 1 mỗi lần có người mở trang trong mộ
 ## Tổng hợp theo đảng bộ cơ sở (mục Xác nhận phân bổ)
 Để biết từng đảng bộ xã, phường có bao nhiêu đơn vị đã xác nhận, hệ thống ghép tên đơn vị trong file phân bổ với danh sách có mã đơn vị ở mục Tài khoản ngân hàng.
 Làm theo thứ tự: (1) chọn 2 file tài khoản ngân hàng, (2) chọn các file phân bổ. Chi bộ trùng tên ở nhiều nơi mà trạng thái khác nhau thì số liệu là ước tính (có dấu ≈).
+
+## Bản cập nhật: biểu đồ, cần nhắc nhở, chi tiết từng xã
+- Trang Tổng quan có biểu đồ tròn, cột và thanh chồng.
+- Mục **Cần nhắc nhở** tự lọc đơn vị thấp (đảng phí, thiếu tài khoản, phân bổ), chỉnh được ngưỡng và sao chép danh sách.
+- Ở mỗi mục có ô chọn xã, phường để xem chi tiết, hoặc bấm vào một dòng trong bảng.
+- Sau khi cập nhật code, quản trị viên chọn lại 2 file tài khoản ngân hàng một lần để có danh sách chi tiết đơn vị chưa có tài khoản.
