@@ -1,0 +1,26 @@
+# Theo dõi đảng phí, tài khoản ngân hàng, xác nhận phân bổ
+
+Ai cũng xem được số liệu (hoặc chỉ người có mật khẩu xem). Chỉ người có **mật khẩu quản trị** mới tải được file Excel lên.
+File Excel được đọc ngay trên trình duyệt của quản trị viên. Máy chủ chỉ lưu số liệu tổng hợp theo đơn vị,
+không lưu file gốc, không lưu CCCD hay tên người xác nhận.
+
+## Cách đưa lên mạng (khuyên dùng GitHub + Netlify)
+1. Tạo repository **Private** trên GitHub, tải toàn bộ thư mục này lên (giữ nguyên cấu trúc `public/`, `netlify/`, `netlify.toml`, `package.json`).
+2. Vào netlify.com, chọn **Add new site, Import an existing project**, chọn repo vừa tạo. Để trống ô Build command, Netlify tự đọc `netlify.toml`.
+3. Sau khi tạo site: **Site configuration, Environment variables**, thêm:
+   - `ADMIN_PASSWORD`: mật khẩu quản trị (bắt buộc, nên dài từ 12 ký tự).
+   - `VIEW_PASSWORD`: mật khẩu xem (tùy chọn). Bỏ trống thì ai có link cũng xem được.
+4. Vào **Deploys, Trigger deploy, Deploy site** để áp dụng biến môi trường.
+
+## Sử dụng
+- Mở trang, bấm **Quản trị**, nhập mật khẩu quản trị. Các ô chọn file hiện ra ở từng mục.
+- Chọn file Excel gốc tải từ hệ thống (không cần đổi tên). Trang tính xong và tự lưu, mọi người mở lại là thấy số mới.
+- Mục Tài khoản ngân hàng cần chọn đủ 2 file trong cùng một lần làm việc.
+- Mục Xác nhận phân bổ có 4 ô theo từng cấp, chọn đúng file vào đúng ô.
+
+## Lưu ý
+- Kéo thả thư mục lên Netlify (không qua GitHub) sẽ không chạy được phần lưu dữ liệu, hãy dùng cách nối GitHub ở trên.
+- Muốn đổi mật khẩu: sửa biến môi trường rồi deploy lại.
+
+## Đổi ảnh banner
+Chép một ảnh vào thư mục `public/` và đặt tên `hero.jpg`. Banner đầu trang sẽ tự dùng ảnh đó, nếu không có ảnh thì dùng màu nền mặc định.
