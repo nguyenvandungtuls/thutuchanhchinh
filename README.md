@@ -24,3 +24,7 @@ không lưu file gốc, không lưu CCCD hay tên người xác nhận.
 
 ## Đổi ảnh banner
 Chép một ảnh vào thư mục `public/` và đặt tên `hero.jpg`. Banner đầu trang sẽ tự dùng ảnh đó, nếu không có ảnh thì dùng màu nền mặc định.
+
+## Số người đang online và tổng lượt truy cập
+Mỗi người mở trang (và đang xem tab) sẽ gửi một tín hiệu 60 giây một lần. Ai quá 150 giây không báo tín hiệu thì không còn được tính. File xử lý là `netlify/functions/online.mjs`. Muốn tắt tính năng này thì xóa file đó và xóa phần `ping` cùng ô `onb` trong `public/index.html`.
+Tổng lượt truy cập tăng 1 mỗi lần có người mở trang trong một phiên trình duyệt mới (tải lại trang không tính thêm). Con số được lưu trên máy chủ.
